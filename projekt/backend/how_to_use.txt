@@ -1,1 +1,1 @@
-Inicijalizirati Spring Boot i PostgreSQL demo projekt - nakon toga napraviti pull/merge request
+Verzija developera 1
