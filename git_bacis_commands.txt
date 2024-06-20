@@ -1,0 +1,9 @@
+git clone >REPO_URL>
+git pull
+git add -A
+git commit -m "commit_message"
+git push
+git push --set-upstream origin BRANCH_NAME
+git reset --hard HEAD 
+git status
+git merge origin/development
