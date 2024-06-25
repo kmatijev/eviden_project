@@ -1,4 +1,4 @@
-package hr.atos.praksa.cinema
+package hr.atos.praksa.cinematicketreservation
 
 import org.junit.Test
 
