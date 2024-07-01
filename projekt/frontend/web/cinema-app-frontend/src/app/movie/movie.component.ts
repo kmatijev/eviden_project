@@ -10,7 +10,7 @@ import { MovieDetails } from '../movie-details';
       <img class="movie-photo" [src]="movieDetails.photo" alt="Movie poster of {{movieDetails.name}}">
       <h2 class="movie-heading">{{ movieDetails.name }}</h2>
       <p class="movie-description">{{ movieDetails.description }}</p>
-      <h1 class="movie-rating">Rating: {{ movieDetails.rating }} ★</h1>
+      <h3 class="movie-rating">Rating: {{ movieDetails.rating }} <i class="bi bi-star-fill"></i></h3>
 
     </section>
   `,

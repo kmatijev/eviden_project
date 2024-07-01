@@ -8,7 +8,7 @@ import { MovieDetails } from '../movie-details';
   standalone: true,
   imports: [CommonModule, MovieComponent],
   template: `
-    <h1 class="movies-screening">Movies that are screening right now</h1>
+    <h1 class="text-center">Movies that are screening right now</h1>
     <section class="results">
       <app-movie *ngFor="let movieDetails of movieDetailsList" [movieDetails]="movieDetails"></app-movie>
     </section>
