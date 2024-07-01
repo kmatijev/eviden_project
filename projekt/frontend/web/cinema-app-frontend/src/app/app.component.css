@@ -1,0 +1,9 @@
+.navbar-brand .bi {
+  margin-left: 10px; /* Adjust spacing as needed */
+  font-size: 2rem; /* Adjust icon size as needed */
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+}

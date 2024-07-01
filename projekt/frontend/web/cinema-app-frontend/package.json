@@ -12,15 +12,26 @@
   "private": true,
   "dependencies": {
     "@angular/animations": "^17.3.0",
+<<<<<<< HEAD
+=======
+    "@angular/cdk": "^17.3.10",
+>>>>>>> dspajic/homepage
     "@angular/common": "^17.3.0",
     "@angular/compiler": "^17.3.0",
     "@angular/core": "^17.3.0",
     "@angular/forms": "^17.3.0",
+<<<<<<< HEAD
+=======
+    "@angular/material": "^17.3.10",
+>>>>>>> dspajic/homepage
     "@angular/platform-browser": "^17.3.0",
     "@angular/platform-browser-dynamic": "^17.3.0",
     "@angular/platform-server": "^17.3.0",
     "@angular/router": "^17.3.0",
     "@angular/ssr": "^17.3.8",
+    "@popperjs/core": "^2.11.8",
+    "bootstrap": "^5.3.3",
+    "bootstrap-icons": "^1.11.3",
     "express": "^4.18.2",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
@@ -41,4 +52,8 @@
     "karma-jasmine-html-reporter": "~2.1.0",
     "typescript": "~5.4.2"
   }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> dspajic/homepage
