@@ -1,7 +1,6 @@
 package hr.atos.praksa.cinematicketreservation.model.apis
 
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.GET
 

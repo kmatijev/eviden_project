@@ -6,7 +6,7 @@
     android:clickable="true"
     android:focusable="true"
     android:checkable="false"
-    android:paddingTop="50dp"
+    android:layout_margin="5dp"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <LinearLayout
@@ -16,7 +16,7 @@
         <ImageView
             android:id="@+id/movie_image"
             android:layout_width="120dp"
-            android:layout_height="200dp"
+            android:layout_height="220dp"
             android:layout_margin="10dp" />
 
         <LinearLayout

@@ -1,9 +1,7 @@
 package hr.atos.praksa.cinematicketreservation.model.repository
 
-import android.util.Log
 import hr.atos.praksa.cinematicketreservation.model.apis.MovieAPIService
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
-import retrofit2.Call
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
