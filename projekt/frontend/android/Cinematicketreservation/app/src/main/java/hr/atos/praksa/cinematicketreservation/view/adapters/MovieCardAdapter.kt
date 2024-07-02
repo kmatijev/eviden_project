@@ -1,5 +1,6 @@
 package hr.atos.praksa.cinematicketreservation.view.adapters
 
+import android.graphics.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +11,7 @@ import com.bumptech.glide.Glide
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
+import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 
 class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var screeningList: List<ScreeningDataModel>) : RecyclerView.Adapter<MovieCardAdapter.ViewHolder>(){
     private var filteredMovieList: List<MovieDataModel> = movieList
@@ -22,20 +24,14 @@ class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var
 
     fun setMovies(movies: List<MovieDataModel>){
         movieList = movies
-        filterMovies()
+        filteredMovieList = MovieViewModel.filterMovies(movieList, screeningList)
         notifyDataSetChanged()
     }
 
     fun setScreenings(screenings: List<ScreeningDataModel>){
         screeningList = screenings
-        filterMovies()
+        filteredMovieList = MovieViewModel.filterMovies(movieList, screeningList)
         notifyDataSetChanged()
-    }
-
-    private fun filterMovies() {
-        filteredMovieList = movieList.filter { movie ->
-            screeningList.any { it.movieId == movie.id && it.isOngoing == true }
-        }
     }
 
     override fun onBindViewHolder(holder: MovieCardAdapter.ViewHolder, position: Int) {
