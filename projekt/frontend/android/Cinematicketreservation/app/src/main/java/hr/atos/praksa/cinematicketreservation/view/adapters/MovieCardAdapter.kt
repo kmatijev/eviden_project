@@ -9,21 +9,37 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
+import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
 
-class MovieCardAdapter (private var list: List<MovieDataModel>) : RecyclerView.Adapter<MovieCardAdapter.ViewHolder>(){
+class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var screeningList: List<ScreeningDataModel>) : RecyclerView.Adapter<MovieCardAdapter.ViewHolder>(){
+    private var filteredMovieList: List<MovieDataModel> = movieList
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieCardAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_card_design, parent, false)
         return ViewHolder(view)
     }
 
-    fun setItems(movies: List<MovieDataModel>){
-        list = movies
+    fun setMovies(movies: List<MovieDataModel>){
+        movieList = movies
+        filterMovies()
         notifyDataSetChanged()
     }
 
+    fun setScreenings(screenings: List<ScreeningDataModel>){
+        screeningList = screenings
+        filterMovies()
+        notifyDataSetChanged()
+    }
+
+    private fun filterMovies() {
+        filteredMovieList = movieList.filter { movie ->
+            screeningList.any { it.movieId == movie.id && it.isOngoing == true }
+        }
+    }
+
     override fun onBindViewHolder(holder: MovieCardAdapter.ViewHolder, position: Int) {
-        val movie = list[position]
+        val movie = filteredMovieList[position]
 
         Glide.with(holder.itemView.context)
             .load(movie.imgUrl)
@@ -38,7 +54,7 @@ class MovieCardAdapter (private var list: List<MovieDataModel>) : RecyclerView.A
     }
 
     override fun getItemCount(): Int {
-        return list.size
+        return filteredMovieList.size
     }
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){

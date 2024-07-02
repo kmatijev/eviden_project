@@ -3,23 +3,23 @@ package hr.atos.praksa.cinematicketreservation.viewmodel
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
-import hr.atos.praksa.cinematicketreservation.model.repository.MovieRepository
+import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
+import hr.atos.praksa.cinematicketreservation.model.repository.ScreeningsRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class MovieViewModel(): ViewModel() {
-    var movies = MutableLiveData<List<MovieDataModel>>()
+class ScreeningViewModel(): ViewModel() {
+    var screenings = MutableLiveData<List<ScreeningDataModel>>()
 
-    suspend fun fetchMovies(){
+    suspend fun fetchScreenings(){
         CoroutineScope(Dispatchers.IO).launch {
-            val response = MovieRepository.getMovies()
+            val response = ScreeningsRepository.getScreenings()
             if (response.isSuccessful) {
                 launch(Dispatchers.Main) {
-                    Log.d("MovieViewModel.kt", "onCreate: ${response.body()}")
+                    Log.d("ScreeningViewModel.kt", "onCreate: ${response.body()}")
                     if (!response.body().isNullOrEmpty()) {
-                        movies.postValue(response.body())
+                        screenings.postValue(response.body())
                     }
                 }
             }
