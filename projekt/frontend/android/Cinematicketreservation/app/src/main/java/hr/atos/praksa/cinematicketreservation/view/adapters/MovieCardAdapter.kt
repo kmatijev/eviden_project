@@ -1,6 +1,5 @@
 package hr.atos.praksa.cinematicketreservation.view.adapters
 
-import android.graphics.Movie
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
-import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
-import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 
-class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var screeningList: List<ScreeningDataModel>) : RecyclerView.Adapter<MovieCardAdapter.ViewHolder>(){
-    private var filteredMovieList: List<MovieDataModel> = movieList
+class MovieCardAdapter (private var movieList: List<MovieDataModel>) : RecyclerView.Adapter<MovieCardAdapter.ViewHolder>(){
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieCardAdapter.ViewHolder {
         val view = LayoutInflater.from(parent.context)
@@ -22,20 +18,13 @@ class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var
         return ViewHolder(view)
     }
 
-    fun setMovies(movies: List<MovieDataModel>){
+    fun setItems(movies: List<MovieDataModel>){
         movieList = movies
-        filteredMovieList = MovieViewModel.filterMovies(movieList, screeningList)
-        notifyDataSetChanged()
-    }
-
-    fun setScreenings(screenings: List<ScreeningDataModel>){
-        screeningList = screenings
-        filteredMovieList = MovieViewModel.filterMovies(movieList, screeningList)
         notifyDataSetChanged()
     }
 
     override fun onBindViewHolder(holder: MovieCardAdapter.ViewHolder, position: Int) {
-        val movie = filteredMovieList[position]
+        val movie = movieList[position]
 
         Glide.with(holder.itemView.context)
             .load(movie.imgUrl)
@@ -50,7 +39,7 @@ class MovieCardAdapter (private var movieList: List<MovieDataModel>, private var
     }
 
     override fun getItemCount(): Int {
-        return filteredMovieList.size
+        return movieList.size
     }
 
     class ViewHolder (itemView: View): RecyclerView.ViewHolder(itemView){
