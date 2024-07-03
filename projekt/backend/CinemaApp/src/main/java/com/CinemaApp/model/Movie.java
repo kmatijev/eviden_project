@@ -43,6 +43,9 @@ public class Movie {
         this.image = image;
     }
 
+    public Movie() {
+    }
+
     public long getId() {
         return id;
     }
