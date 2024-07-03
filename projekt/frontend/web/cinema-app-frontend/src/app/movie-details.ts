@@ -3,5 +3,6 @@ export interface MovieDetails {
     name: string,
     photo: string,
     description: string,
-    rating: number
+    rating: number,
+    genre: string
 }

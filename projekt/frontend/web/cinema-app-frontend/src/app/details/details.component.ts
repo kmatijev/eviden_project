@@ -8,9 +8,18 @@ import { MoviesService } from '../movies.service';
   standalone: true,
   imports: [],
   template: `
-    <p>
-      details: {{ movieDetails?.id }}
-    </p>
+    <article class="movie">
+      <div class="movie-content">
+        <img class="movie-photo" [src]="movieDetails?.photo" alt="{{movieDetails?.name}}">
+        <section class="movie-description">
+          <h1 class="movie-heading">{{movieDetails?.name}}</h1>
+          <p>{{movieDetails?.description}}</p>
+          <h2 class="movie-rating">Rating: {{movieDetails?.rating}} <i class="bi bi-star-fill"></i></h2>
+          <h2 class="movie-genre">Genre: {{movieDetails?.genre}}</h2>
+        </section>
+      </div>
+    </article>
+
   `,
   styleUrl: './details.component.css'
 })
