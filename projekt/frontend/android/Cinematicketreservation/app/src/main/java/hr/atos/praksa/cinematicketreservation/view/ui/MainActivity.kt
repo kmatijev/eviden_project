@@ -1,15 +1,19 @@
 package hr.atos.praksa.cinematicketreservation.view.ui
 
-import android.app.Activity
 import android.os.Bundle
-import android.provider.ContactsContract.Profile
+import android.util.Log
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
-import androidx.fragment.app.Fragment
-import androidx.fragment.app.add
-import androidx.fragment.app.commit
+import androidx.navigation.NavHost
+import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.NavigationUI
+import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.databinding.ActivityMainBinding
@@ -21,6 +25,7 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main)) { v, insets ->
@@ -29,23 +34,19 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        replaceFragment(HomeFragment())
-        
-        binding.bottomNavBar.setOnItemSelectedListener {
-            when(it.itemId){
-                R.id.home -> replaceFragment(HomeFragment())
-                R.id.profile -> replaceFragment(ProfileFragment())
-                else -> {
+        binding.root.post {
+            val navHostFragment = supportFragmentManager.findFragmentById(R.id.container) as? NavHostFragment
+            if (navHostFragment != null) {
+                val navController = navHostFragment.navController
+                binding.bottomNavBar.setupWithNavController(navController)
 
+                binding.bottomNavBar.setOnItemSelectedListener { item ->
+                    NavigationUI.onNavDestinationSelected(item, navController)
+                    true
                 }
             }
-            true
         }
-    }
-    private fun replaceFragment(fragment: Fragment){
-        val fragmentManager = supportFragmentManager
-        val fragmentTransaction = fragmentManager.beginTransaction()
-        fragmentTransaction.replace(R.id.container, fragment)
-        fragmentTransaction.commit()
+
+
     }
 }

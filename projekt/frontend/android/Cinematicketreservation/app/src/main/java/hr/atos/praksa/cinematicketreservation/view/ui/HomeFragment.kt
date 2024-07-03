@@ -8,6 +8,7 @@ import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
@@ -16,7 +17,7 @@ import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.filterMovies
 import kotlinx.coroutines.launch
 
-class HomeFragment: Fragment(R.layout.fragment_home) {
+class HomeFragment: Fragment(R.layout.fragment_home), MovieCardAdapter.OnItemClickListener {
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var movieCardAdapter: MovieCardAdapter
     private lateinit var filteredList: List<MovieDataModel>
@@ -30,6 +31,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         movieCardAdapter = MovieCardAdapter(emptyList())
         recyclerView.adapter = movieCardAdapter
+        movieCardAdapter.setOnItemClickListener(this)
 
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
@@ -61,5 +63,9 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
     private suspend fun makeFetchRequest(){
         movieViewModel.fetchMovies()
         movieViewModel.fetchScreenings()
+    }
+
+    override fun onItemClick(movie: MovieDataModel) {
+
     }
 }
