@@ -29,8 +29,8 @@ class MainActivity : AppCompatActivity() {
             insets
         }
 
-        replaceFragment(HomeFragment())
-        
+        replaceFragment(ReservationFragment())
+
         binding.bottomNavBar.setOnItemSelectedListener {
             when(it.itemId){
                 R.id.home -> replaceFragment(HomeFragment())
