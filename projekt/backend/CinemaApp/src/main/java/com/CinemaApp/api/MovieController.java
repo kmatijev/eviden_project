@@ -4,10 +4,10 @@ package com.CinemaApp.api;
 import com.CinemaApp.model.Movie;
 import com.CinemaApp.service.MovieService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Optional;
 
 @RestController
 @RequestMapping("/api/movies")
@@ -24,4 +24,14 @@ public class MovieController {
         return movieService.addMovie(movie);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity<Movie> getMovieById(@PathVariable Long id) {
+        Optional<Movie> movie = movieService.getMovieById(id);
+        if(movie.isPresent()) {
+            return ResponseEntity.ok(movie.get());
+        }
+        else {
+            return ResponseEntity.notFound().build();
+        }
+    }
 }
