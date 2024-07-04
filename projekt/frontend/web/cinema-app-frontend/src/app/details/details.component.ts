@@ -2,11 +2,13 @@ import { Component, Input, inject } from '@angular/core';
 import { MovieDetails } from '../movie-details';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../movies.service';
+import { SeatComponent } from '../seat/seat.component';
+import { TheatreComponent } from '../theatre/theatre.component';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [],
+  imports: [TheatreComponent],
   template: `
     <article class="movie">
       <div class="movie-content">
@@ -19,6 +21,7 @@ import { MoviesService } from '../movies.service';
         </section>
       </div>
     </article>
+    <app-theatre></app-theatre>
 
   `,
   styleUrl: './details.component.css'
