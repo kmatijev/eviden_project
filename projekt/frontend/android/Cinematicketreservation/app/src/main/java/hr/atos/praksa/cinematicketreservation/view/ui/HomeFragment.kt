@@ -6,6 +6,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import hr.atos.praksa.cinematicketreservation.R
@@ -16,7 +17,7 @@ import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.filterMovies
 import kotlinx.coroutines.launch
 
-class HomeFragment: Fragment(R.layout.fragment_home) {
+class HomeFragment: Fragment(R.layout.fragment_home), MovieCardAdapter.OnItemClickListener {
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var movieCardAdapter: MovieCardAdapter
     private lateinit var filteredList: List<MovieDataModel>
@@ -30,6 +31,7 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         movieCardAdapter = MovieCardAdapter(emptyList())
         recyclerView.adapter = movieCardAdapter
+        movieCardAdapter.setOnItemClickListener(this)
 
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
@@ -61,5 +63,14 @@ class HomeFragment: Fragment(R.layout.fragment_home) {
     private suspend fun makeFetchRequest(){
         movieViewModel.fetchMovies()
         movieViewModel.fetchScreenings()
+    }
+
+    override fun onItemClick(movie: MovieDataModel) {
+        val action = HomeFragmentDirections.actionHomeFragmentToReservationFragment(movie)
+
+        if(view != null){
+            view?.findNavController()?.navigate(action)
+        }
+
     }
 }
