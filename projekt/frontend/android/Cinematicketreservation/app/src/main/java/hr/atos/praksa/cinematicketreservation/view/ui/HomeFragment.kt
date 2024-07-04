@@ -67,6 +67,10 @@ class HomeFragment: Fragment(R.layout.fragment_home), MovieCardAdapter.OnItemCli
 
     override fun onItemClick(movie: MovieDataModel) {
         val action = HomeFragmentDirections.actionHomeFragmentToReservationFragment(movie)
-        view?.findNavController()?.navigate(action)
+
+        if(view != null){
+            view?.findNavController()?.navigate(action)
+        }
+
     }
 }
