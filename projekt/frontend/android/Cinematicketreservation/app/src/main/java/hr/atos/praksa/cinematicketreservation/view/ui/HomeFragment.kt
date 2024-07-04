@@ -6,9 +6,9 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
@@ -66,6 +66,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), MovieCardAdapter.OnItemCli
     }
 
     override fun onItemClick(movie: MovieDataModel) {
-
+        val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment(movie)
+        view?.findNavController()?.navigate(action)
     }
 }
