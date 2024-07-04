@@ -5,7 +5,7 @@
 -- Dumped from database version 16.3
 -- Dumped by pg_dump version 16.3
 
--- Started on 2024-07-01 11:58:45
+-- Started on 2024-07-03 11:23:07
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -21,6 +21,22 @@ SET row_security = off;
 SET default_tablespace = '';
 
 SET default_table_access_method = heap;
+
+--
+-- TOC entry 221 (class 1259 OID 16718)
+-- Name: cinema_user; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.cinema_user (
+    id bigint NOT NULL,
+    fname character varying(30) NOT NULL,
+    lname character varying(30) NOT NULL,
+    email character varying(50) NOT NULL,
+    phone_number character varying(15) NOT NULL
+);
+
+
+ALTER TABLE public.cinema_user OWNER TO postgres;
 
 --
 -- TOC entry 216 (class 1259 OID 16693)
@@ -95,7 +111,7 @@ CREATE TABLE public.screening (
     date character varying(20) NOT NULL,
     movie_id bigint NOT NULL,
     hall_id integer NOT NULL,
-    "isOngoing" boolean NOT NULL
+    ongoing boolean NOT NULL
 );
 
 
@@ -211,27 +227,11 @@ ALTER TABLE public.ticket ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- TOC entry 221 (class 1259 OID 16718)
--- Name: user; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public."user" (
-    id bigint NOT NULL,
-    fname character varying(30) NOT NULL,
-    lname character varying(30) NOT NULL,
-    email character varying(50) NOT NULL,
-    "phoneNumber" character varying(15) NOT NULL
-);
-
-
-ALTER TABLE public."user" OWNER TO postgres;
-
---
 -- TOC entry 228 (class 1259 OID 16784)
 -- Name: user_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
-ALTER TABLE public."user" ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
+ALTER TABLE public.cinema_user ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
     SEQUENCE NAME public.user_id_seq
     START WITH 1
     INCREMENT BY 1
@@ -239,6 +239,17 @@ ALTER TABLE public."user" ALTER COLUMN id ADD GENERATED ALWAYS AS IDENTITY (
     NO MAXVALUE
     CACHE 1
 );
+
+
+--
+-- TOC entry 4892 (class 0 OID 16718)
+-- Dependencies: 221
+-- Data for Name: cinema_user; Type: TABLE DATA; Schema: public; Owner: postgres
+--
+
+COPY public.cinema_user (id, fname, lname, email, phone_number) FROM stdin;
+1	Kristijan	Danilovic	kdanilovic@etfos.hr	test
+\.
 
 
 --
@@ -258,6 +269,7 @@ COPY public.hall (id, number_of_seats) FROM stdin;
 --
 
 COPY public.movie (id, name, description, genre, duration, actors, director, image) FROM stdin;
+3	Inception	A mind-bending thriller about dreams within dreams.	Sci-Fi	148	Leonardo DiCaprio, Joseph Gordon-Levitt, Ellen Page	Christopher Nolan	inception.jpg
 \.
 
 
@@ -267,7 +279,7 @@ COPY public.movie (id, name, description, genre, duration, actors, director, ima
 -- Data for Name: screening; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.screening (id, start_time, date, movie_id, hall_id, "isOngoing") FROM stdin;
+COPY public.screening (id, start_time, date, movie_id, hall_id, ongoing) FROM stdin;
 \.
 
 
@@ -302,16 +314,6 @@ COPY public.ticket (id, user_id, price, seat_id, screening_id, movie_id, hall_id
 
 
 --
--- TOC entry 4892 (class 0 OID 16718)
--- Dependencies: 221
--- Data for Name: user; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public."user" (id, fname, lname, email, "phoneNumber") FROM stdin;
-\.
-
-
---
 -- TOC entry 4905 (class 0 OID 0)
 -- Dependencies: 222
 -- Name: hall_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
@@ -326,7 +328,7 @@ SELECT pg_catalog.setval('public.hall_id_seq', 1, false);
 -- Name: movie_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.movie_id_seq', 1, true);
+SELECT pg_catalog.setval('public.movie_id_seq', 3, true);
 
 
 --
@@ -371,7 +373,7 @@ SELECT pg_catalog.setval('public.ticket_id_seq', 1, false);
 -- Name: user_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.user_id_seq', 1, false);
+SELECT pg_catalog.setval('public.user_id_seq', 1, true);
 
 
 --
@@ -430,10 +432,10 @@ ALTER TABLE ONLY public.ticket
 
 --
 -- TOC entry 4731 (class 2606 OID 16722)
--- Name: user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: cinema_user user_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
-ALTER TABLE ONLY public."user"
+ALTER TABLE ONLY public.cinema_user
     ADD CONSTRAINT user_pkey PRIMARY KEY (id);
 
 
@@ -533,10 +535,10 @@ ALTER TABLE ONLY public.ticket
 --
 
 ALTER TABLE ONLY public.ticket
-    ADD CONSTRAINT ticket_user_id_foreign FOREIGN KEY (user_id) REFERENCES public."user"(id);
+    ADD CONSTRAINT ticket_user_id_foreign FOREIGN KEY (user_id) REFERENCES public.cinema_user(id);
 
 
--- Completed on 2024-07-01 11:58:45
+-- Completed on 2024-07-03 11:23:07
 
 --
 -- PostgreSQL database dump complete
