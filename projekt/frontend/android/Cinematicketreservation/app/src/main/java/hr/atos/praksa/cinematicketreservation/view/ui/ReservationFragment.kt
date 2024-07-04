@@ -6,12 +6,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.navArgs
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.databinding.FragmentReservationBinding
 
 class ReservationFragment : Fragment(R.layout.fragment_reservation) {
 
     private lateinit var binding: FragmentReservationBinding
+    private val args: ReservationFragmentArgs by navArgs()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -32,8 +34,8 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
                 binding.btShowmore.setIconResource(R.drawable.arrow_down)
             }
         }
-
-        binding.movieImage.setImageResource()
+        binding.title.text = args.movie.name
+        //binding.movieImage.setImageResource()
 
         return binding.root
     }

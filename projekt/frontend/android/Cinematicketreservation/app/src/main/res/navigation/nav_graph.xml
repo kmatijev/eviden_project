@@ -10,8 +10,8 @@
         android:name="hr.atos.praksa.cinematicketreservation.view.ui.HomeFragment"
         tools:layout="@layout/fragment_home">
         <action
-            android:id="@+id/action_home_fragment_to_profile_fragment"
-            app:destination="@id/profile_fragment" >
+            android:id="@+id/action_home_fragment_to_reservation_fragment"
+            app:destination="@id/reservation_fragment" >
         <argument
             android:name="movie"
             app:argType="hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel" />
@@ -21,7 +21,12 @@
     <fragment
         android:id="@+id/profile_fragment"
         android:name="hr.atos.praksa.cinematicketreservation.view.ui.ProfileFragment"
-        tools:layout="@layout/fragment_profile">
+        tools:layout="@layout/fragment_profile"/>
+
+    <fragment
+        android:id="@+id/reservation_fragment"
+        android:name="hr.atos.praksa.cinematicketreservation.view.ui.ReservationFragment"
+        tools:layout="@layout/fragment_reservation">
         <argument
             android:name="movie"
             app:argType="hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel" />

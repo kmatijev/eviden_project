@@ -66,7 +66,7 @@ class HomeFragment: Fragment(R.layout.fragment_home), MovieCardAdapter.OnItemCli
     }
 
     override fun onItemClick(movie: MovieDataModel) {
-        val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment(movie)
+        val action = HomeFragmentDirections.actionHomeFragmentToReservationFragment(movie)
         view?.findNavController()?.navigate(action)
     }
 }
