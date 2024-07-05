@@ -11,5 +11,5 @@ data class MovieDataModel(
     @SerializedName("duration"    ) var duration    : Int?    = null,
     @SerializedName("actors"      ) var actors      : String? = null,
     @SerializedName("director"    ) var director    : String? = null,
-    @SerializedName("img_url"     ) var imgUrl      : String? = null
+    @SerializedName("image"       ) var imgUrl      : String? = null
 ):Serializable
