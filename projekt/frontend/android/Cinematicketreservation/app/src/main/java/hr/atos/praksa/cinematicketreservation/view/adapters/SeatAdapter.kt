@@ -22,9 +22,9 @@ class SeatAdapter(context: Context, seats: List<ScreeningSeatDataModel>): ArrayA
 
         if (seat?.status == false) {
             seatImage?.setColorFilter(Color.RED)
+            seatImage?.isEnabled = false
             seatImage?.isClickable = false
         }
-
         return listItemView!!
     }
 }
