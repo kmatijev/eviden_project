@@ -3,5 +3,8 @@ export interface MovieDetails {
     name: string,
     image: string,
     description: string,
-    genre: string
+    genre: string,
+    director: string,
+    actors: string,
+    duration: number
 }
