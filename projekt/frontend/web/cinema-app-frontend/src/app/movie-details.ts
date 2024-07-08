@@ -1,7 +1,7 @@
 export interface MovieDetails {
     id: number,
     name: string,
-    img_url: string,
+    image: string,
     description: string,
     genre: string
 }

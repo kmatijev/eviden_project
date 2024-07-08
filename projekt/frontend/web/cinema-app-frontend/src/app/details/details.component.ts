@@ -15,7 +15,7 @@ import { Observable } from 'rxjs';
   template: `
     <article class="movie" *ngIf="movieDetails$ | async as movieDetails">
       <div class="movie-content">
-        <img class="movie-photo" [src]="movieDetails.img_url" alt="{{movieDetails.name}}">
+        <img class="movie-photo" [src]="movieDetails.image" alt="{{movieDetails.name}}">
         <section class="movie-description">
           <h1 class="movie-heading">{{movieDetails.name}}</h1>
           <p>{{movieDetails.description}}</p>

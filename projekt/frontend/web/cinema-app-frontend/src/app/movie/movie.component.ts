@@ -8,7 +8,7 @@ import { RouterModule } from '@angular/router';
   imports: [RouterModule],
   template: `
    <section class="movie">
-      <img class="movie-photo" [src]="movieDetails.img_url" alt="Movie poster of {{movieDetails.name}}">
+      <img class="movie-photo" [src]="movieDetails.image" alt="Movie poster of {{movieDetails.name}}">
       <h2 class="movie-heading">{{ movieDetails.name }}</h2>
       <p class="movie-description">{{ movieDetails.description }}</p>
       <div class="link-container">
