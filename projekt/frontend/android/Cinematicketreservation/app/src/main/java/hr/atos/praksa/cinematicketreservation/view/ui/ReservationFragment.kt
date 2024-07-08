@@ -45,12 +45,13 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
         descriptionTextView.text = args.movie.description
 
         showMoreButton.setOnClickListener {
-            if (descriptionTextView.maxLines == 3) {
+            if (descriptionTextView.maxLines == 2) {
                 descriptionTextView.maxLines = Int.MAX_VALUE
                 showMoreButton.text = "Show less..."
+                descriptionTextView.ellipsize = null
                 showMoreButton.setIconResource(R.drawable.arrow_up)
             } else {
-                descriptionTextView.maxLines = 3
+                descriptionTextView.maxLines = 2
                 showMoreButton.text = "Show more..."
                 showMoreButton.setIconResource(R.drawable.arrow_down)
             }
