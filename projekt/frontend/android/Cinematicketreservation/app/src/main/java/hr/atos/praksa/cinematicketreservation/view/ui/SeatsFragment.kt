@@ -13,15 +13,11 @@ import hr.atos.praksa.cinematicketreservation.view.adapters.SeatAdapter
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 import kotlinx.coroutines.launch
 
-class SeatsFragment: Fragment(R.layout.fragment_seats) {
+class SeatsFragment: Fragment(R.layout.fragment_seats){
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var seatGridView: GridView
     private lateinit var seatsList: List<ScreeningSeatDataModel>
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         seatGridView = view.findViewById(R.id.seats_grid)
@@ -32,9 +28,8 @@ class SeatsFragment: Fragment(R.layout.fragment_seats) {
         movieViewModel.seats.observe(viewLifecycleOwner) { seats ->
             val seatAdapter = SeatAdapter(requireContext(), seats)
             seatGridView.adapter = seatAdapter
-            Log.d("HomeFragment.kt", "onViewCreated: ${seats}")
+            Log.d("HomeFragment.kt", "onViewCreated: $seats")
         }
-
 
     }
 
