@@ -1,0 +1,18 @@
+{
+	"movies":[
+	{"id" : 1, "name" : "Pulp fiction", "description" : "The lives of two mob hitmen, a boxer, a gangster and his wife, and a pair of diner bandits intertwine in four tales of violence and redemption.", "genre": "Crime, Drama", "duration" : 154, "actors" : "John Travolta, Uma Thurman, Samuel L. Jackson", "director":"Quentin Tarantino", "img_url" : "https://m.media-amazon.com/images/M/MV5BNGNhMDIzZTUtNTBlZi00MTRlLWFjM2ItYzViMjE3YzI5MjljXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"},
+	{"id" : 2, "name" : "Godzilla Minus One", "description" : "Post-war Japan is at its lowest point when a new crisis emerges in the form of a giant monster, baptized in the horrific power of the atomic bomb.", "genre": "Action, Adventure, Drama", "duration" : 124, "actors" : "Minami Hamabe, Ryunosuke Kamiki, Sakura Andô", "director" : "Takashi Yamazaki", "img_url": "https://m.media-amazon.com/images/M/MV5BY2M1MzI1MTQtZTJiZS00MGFmLWJmOWQtOGZiN2VkYzU1ODA0XkEyXkFqcGdeQXVyMTUzMTg2ODkz._V1_.jpg"},
+	{"id" : 3, "name" : "The Dark Knight", "description" : "When the menace known as the Joker wreaks havoc and chaos on the people of Gotham, Batman must accept one of the greatest psychological and physical tests of his ability to fight injustice.", "genre": "Action, Crime, Drama", "duration" : 152, "actors" : "Christian Bale, Heath Ledger, Aaron Eckhart", "director" : "Christopher Nolan", "img_url": "https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_.jpg"},
+	{"id" : 4, "name" : "Back to the Future", "description" : "Marty McFly, a 17-year-old high school student, is accidentally sent 30 years into the past in a time-traveling DeLorean invented by his close friend, the maverick scientist Doc Brown.", "genre": "Adventure, Comedy, Sci-Fi", "duration" : 116, "actors" : "Michael J. Fox, Christopher Lloyd, Lea Thompson", "director" : "Robert Zemeckis", "img_url": "https://m.media-amazon.com/images/M/MV5BZmU0M2Y1OGUtZjIxNi00ZjBkLTg1MjgtOWIyNThiZWIwYjRiXkEyXkFqcGdeQXVyMTQxNzMzNDI@._V1_.jpg"},
+	{"id" : 5, "name" : "Bad Boys: Ride or Die", "description" : "This Summer, the world's favorite Bad Boys are back with their iconic mix of edge-of-your seat action and outrageous comedy but this time with a twist: Miami's finest are now on the run.", "genre": "Action, Adventure, Comedy", "duration" : 115, "actors" : "Will Smith, Martin Lawrence, Vanessa Hudgens", "director" : "Adil El Arbi, Bilall Fallah", "img_url": "https://m.media-amazon.com/images/M/MV5BY2U5YmQ3YjgtM2I2OC00YmM5LTkyM2MtN2I5Zjg2MDE0ODkwXkEyXkFqcGdeQXVyMDM2NDM2MQ@@._V1_FMjpg_UX1000_.jpg"}
+	],
+	"screenings" : [
+	{"id" : 1, "start_time" : "15:00", "date" : "29.6.2024.", "movie_id" : 3, "hall_id" : 1, "is_ongoing" : "true"},
+	{"id" : 2, "start_time" : "17:30", "date" : "30.6.2024.", "movie_id" : 1, "hall_id" : 1, "is_ongoing" : "true"},
+	{"id" : 3, "start_time" : "21:00", "date" : "28.6.2024.", "movie_id" : 3, "hall_id" : 1, "is_ongoing" : "true"},
+	{"id" : 4, "start_time" : "10:00", "date" : "28.6.2024.", "movie_id" : 2, "hall_id" : 1, "is_ongoing" : "false"},
+	{"id" : 5, "start_time" : "14:00", "date" : "30.6.2024.", "movie_id" : 4 , "hall_id" : 1, "is_ongoing" : "true"},
+	{"id" : 6, "start_time" : "16:00", "date" : "1.7.2024.", "movie_id" : 5, "hall_id" : 1, "is_ongoing" : "true"},
+	{"id" : 7, "start_time" : "19:00", "date" : "3.7.2024.", "movie_id" :  5, "hall_id" : 1, "is_ongoing" : "true"}
+	]
+}	
