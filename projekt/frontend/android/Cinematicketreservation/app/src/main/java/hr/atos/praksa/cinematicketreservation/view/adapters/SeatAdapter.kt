@@ -7,12 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import android.widget.ImageView
-import android.widget.RelativeLayout
 import android.widget.TextView
 import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningSeatDataModel
 
-class SeatAdapter(context: Context, seats: List<ScreeningSeatDataModel>) : ArrayAdapter<ScreeningSeatDataModel>(context, 0, seats) {
+class SeatAdapter(context: Context, seats: List<ScreeningSeatDataModel>, private val listener: SeatSelectionListener) : ArrayAdapter<ScreeningSeatDataModel>(context, 0, seats) {
 
     private var selectedPosition: Int? = null
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
@@ -34,16 +33,28 @@ class SeatAdapter(context: Context, seats: List<ScreeningSeatDataModel>) : Array
             seatImage?.isEnabled = true
             seatImage?.isClickable = true
             seatImage?.setOnClickListener {
-                if (selectedPosition != null) {
-                    val previousSelectedSeat = getItem(selectedPosition!!)
-                    previousSelectedSeat?.status = true
+                if(selectedPosition == position){
+                    selectedPosition = null
+                    seat?.status = true
+                    listener.onSeatDeselected()
+                }else{
+                    if (selectedPosition != null) {
+                        val previousSelectedSeat = getItem(selectedPosition!!)
+                        previousSelectedSeat?.status = true
+                        listener.onSeatDeselected()
+                    }
+                    listener.onSeatSelected(position)
+                    selectedPosition = position
+                    seat?.status = true
                 }
-
-                selectedPosition = position
-                seat?.status = true
                 notifyDataSetChanged()
             }
         }
         return listItemView!!
+    }
+
+    interface SeatSelectionListener{
+        fun onSeatSelected(position: Int)
+        fun onSeatDeselected()
     }
 }
