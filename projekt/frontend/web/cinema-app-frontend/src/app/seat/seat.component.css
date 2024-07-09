@@ -12,3 +12,6 @@
     background-color: #fd0905; 
     cursor: not-allowed;
 }
+.seat.selected {
+    background-color: #32afd8; 
+  }

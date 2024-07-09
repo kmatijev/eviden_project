@@ -10,11 +10,12 @@ import { CommonModule } from '@angular/common';
 })
 export class SeatComponent {
   @Input() seat!: { id: number, status: boolean };
-  @Output() reserve = new EventEmitter<number>();
+  @Input() selected: boolean = false; 
+  @Output() select = new EventEmitter<number>();
 
-  onReserve() {
+  onSelect() {
     if (this.seat.status) {
-      this.reserve.emit(this.seat.id);
+      this.select.emit(this.seat.id);
     }
   }
 }
