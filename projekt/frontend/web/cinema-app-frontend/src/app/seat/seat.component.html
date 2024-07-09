@@ -1,2 +1,8 @@
-<div class="seat-class" onclick="location.href='#';" style="cursor: pointer;">
+<div
+  class="seat"
+  [class.available]="seat.status"
+  [class.reserved]="!seat.status"
+  (click)="onReserve()"
+>
+  {{ seat.id }}
 </div>

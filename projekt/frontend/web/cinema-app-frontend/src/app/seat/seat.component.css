@@ -1,7 +1,14 @@
-.seat-class {
-    border-style: solid;
-    height: 3vh;
-    width: 3vh;
-    margin-bottom: 1vh;
-    background-color: white;
+.seat {
+    cursor: pointer;
+    padding: 10px;
+    margin: 5px;
+    border: 1px solid #000000;
+    text-align: center;
+  }
+.seat.available {
+    background-color: #90ee90; 
+}
+.seat.reserved {
+    background-color: #fd0905; 
+    cursor: not-allowed;
 }
