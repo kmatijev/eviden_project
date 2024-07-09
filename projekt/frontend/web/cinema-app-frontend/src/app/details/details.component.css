@@ -28,11 +28,10 @@
   }
   
   .movie-heading {
-    color: var(--primary-color);
     padding: 10px 0;
+    font-weight: bold;
   }
-  
-  .movie-rating,
+
   .movie-genre {
     text-align: right;
     padding-right: 10px;
