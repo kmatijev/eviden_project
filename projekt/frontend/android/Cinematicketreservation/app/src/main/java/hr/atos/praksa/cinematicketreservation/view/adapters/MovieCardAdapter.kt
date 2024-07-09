@@ -65,9 +65,9 @@ class MovieCardAdapter (private var movieList: List<MovieDataModel>) : RecyclerV
     }
 
     interface OnItemClickListener {
-        fun onItemClick(movie: MovieDataModel)
-    }
+        fun onItemClick(movie: MovieDataModel) }
 
     fun setOnItemClickListener(listener: OnItemClickListener) {
         onItemClickListener = listener}
+
 }
