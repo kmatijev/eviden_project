@@ -3,6 +3,7 @@ package hr.atos.praksa.cinematicketreservation.model.repository
 import hr.atos.praksa.cinematicketreservation.model.apis.MovieAPIService
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
+import hr.atos.praksa.cinematicketreservation.model.models.ScreeningSeatDataModel
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -30,6 +31,10 @@ class MovieRepository private constructor(){
 
         suspend fun getScreenings(): Response<List<ScreeningDataModel>> {
             return movieApiService.getScreenings()
+        }
+
+        suspend fun getSeats(): Response<List<ScreeningSeatDataModel>> {
+            return movieApiService.getSeats()
         }
     }
 }
