@@ -1,5 +1,6 @@
 package hr.atos.praksa.cinematicketreservation.view.ui
 
+import android.content.Context
 import android.os.Bundle
 import android.view.View
 import android.widget.TextView
@@ -9,8 +10,6 @@ import hr.atos.praksa.cinematicketreservation.R
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
-    //val args: ProfileFragmentArgs by navArgs()
-    //private lateinit var movie: MovieDataModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,8 +20,9 @@ class ProfileFragment: Fragment(R.layout.fragment_profile) {
 
         val textView = view.findViewById<TextView>(R.id.textView)
 
-        //movie = args.movie
+        val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
+        val seatId = sharedPref.getInt("seatId", -1)
 
-        //textView.text = "${movie.name} ${movie.description} ${movie.actors}"
+        textView.text = seatId.toString()
     }
 }

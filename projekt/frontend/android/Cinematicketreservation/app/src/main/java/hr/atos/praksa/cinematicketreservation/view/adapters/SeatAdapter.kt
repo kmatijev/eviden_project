@@ -14,6 +14,7 @@ import hr.atos.praksa.cinematicketreservation.model.models.ScreeningSeatDataMode
 class SeatAdapter(context: Context, seats: List<ScreeningSeatDataModel>, private val listener: SeatSelectionListener) : ArrayAdapter<ScreeningSeatDataModel>(context, 0, seats) {
 
     private var selectedPosition: Int? = null
+
     override fun getView(position: Int, convertView: View?, parent: ViewGroup): View {
         var listItemView = convertView
         if (listItemView == null) {
