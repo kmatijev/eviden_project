@@ -39,6 +39,7 @@ class TicketsFragment : Fragment(R.layout.fragment_ticket) {
         val recyclerView = view.findViewById<RecyclerView>(R.id.ticket_recycler)
         recyclerView.layoutManager = LinearLayoutManager(requireContext())
         ticketCardAdapter = TicketCardAdapter(emptyList(), emptyList(), emptyList())
+        Log.i("TicketsFragment.kt", "${tickets}")
         recyclerView.adapter = ticketCardAdapter
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
