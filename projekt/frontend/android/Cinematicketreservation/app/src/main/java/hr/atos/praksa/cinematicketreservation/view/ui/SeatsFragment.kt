@@ -12,9 +12,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
 import hr.atos.praksa.cinematicketreservation.R
+import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningSeatDataModel
 import hr.atos.praksa.cinematicketreservation.view.adapters.SeatAdapter
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
+import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.filterSeats
 import kotlinx.coroutines.launch
 
 
@@ -22,6 +24,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
     private val movieViewModel: MovieViewModel by viewModels()
     private lateinit var seatGridView: GridView
     private lateinit var seatsList: List<ScreeningSeatDataModel>
+    private lateinit var screening: ScreeningDataModel
     private lateinit var reserveButton: Button
     private lateinit var selectedSeat: ScreeningSeatDataModel
 
@@ -37,9 +40,9 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
         }
 
         movieViewModel.seats.observe(viewLifecycleOwner) { seats ->
-            val seatAdapter = SeatAdapter(requireContext(), seats, this)
+            seatsList = filterSeats(screening, seats)
+            val seatAdapter = SeatAdapter(requireContext(), seatsList, this)
             seatGridView.adapter = seatAdapter
-            Log.d("HomeFragment.kt", "onViewCreated: $seats")
         }
 
         reserveButton.setOnClickListener{
