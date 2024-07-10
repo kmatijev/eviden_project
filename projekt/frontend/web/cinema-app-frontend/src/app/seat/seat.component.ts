@@ -10,6 +10,7 @@ import { CommonModule } from '@angular/common';
 })
 export class SeatComponent {
   @Input() seat!: { id: number, status: boolean };
+  @Input() seatNumber!: number;
   @Input() selected: boolean = false;
   @Output() select = new EventEmitter<number>();
 
