@@ -7,4 +7,5 @@ data class ScreeningSeatDataModel(
     @SerializedName("id"          ) var id          : String? =  null,
     @SerializedName("screening_id") var screeningId : String? =  null,
     @SerializedName("status"      ) var status      : Boolean? = null,
-): Serializable
+    @SerializedName("seat_id"     ) var seatId      : String? = null,
+    ): Serializable
