@@ -1,0 +1,7 @@
+.seat-class {
+    border-style: solid;
+    height: 3vh;
+    width: 3vh;
+    margin-bottom: 1vh;
+    background-color: white;
+}
