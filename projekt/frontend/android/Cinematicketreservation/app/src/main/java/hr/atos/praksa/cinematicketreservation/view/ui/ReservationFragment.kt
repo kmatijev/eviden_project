@@ -12,19 +12,21 @@ import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.button.MaterialButton
 import hr.atos.praksa.cinematicketreservation.R
+import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
 import hr.atos.praksa.cinematicketreservation.view.adapters.ScreeningCardAdapter
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.filterScreenings
 import kotlinx.coroutines.launch
 
-class ReservationFragment : Fragment(R.layout.fragment_reservation) {
+class ReservationFragment : Fragment(R.layout.fragment_reservation), ScreeningCardAdapter.OnItemClickListener {
 
     private lateinit var nameTextView: TextView
     private lateinit var genreTextView: TextView
@@ -45,7 +47,14 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+
         val view = inflater.inflate(R.layout.fragment_reservation, container, false)
+
+        screeningsRecyclerView = view.findViewById(R.id.screenings_recycler_view)
+        screeningsRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        screeningsAdapter = ScreeningCardAdapter(emptyList())
+        screeningsRecyclerView.adapter = screeningsAdapter
+        screeningsAdapter.setOnItemClickListener(this)
 
         nameTextView = view.findViewById(R.id.name)
         genreTextView = view.findViewById(R.id.genre)
@@ -54,8 +63,7 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
         directorTextView = view.findViewById(R.id.director)
         descriptionTextView = view.findViewById(R.id.description)
         movieImageView = view.findViewById(R.id.movieImage)
-        showMoreButton = view.findViewById(R.id.bt_show_more)
-        screeningsRecyclerView = view.findViewById(R.id.screenings_recycler_view)
+
 
         // Load image using Glide
         Glide.with(this)
@@ -69,26 +77,7 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
         directorTextView.text = getString(R.string.movie_director, args.movie.director)
         descriptionTextView.text = args.movie.description
 
-        showMoreButton.setOnClickListener {
-            if (descriptionTextView.maxLines == 2) {
-                descriptionTextView.maxLines = Int.MAX_VALUE
-                descriptionTextView.ellipsize = null // Remove ellipsis
-                showMoreButton.text = "Show less..."
-                showMoreButton.setIconResource(R.drawable.arrow_up)
-            } else {
-                descriptionTextView.maxLines = 2
-                descriptionTextView.ellipsize = TextUtils.TruncateAt.END // Add ellipsis
-                showMoreButton.text = "Show more..."
-                showMoreButton.setIconResource(R.drawable.arrow_down)
-            }
-        }
 
-        // Setup RecyclerView for screenings
-        screeningsAdapter = ScreeningCardAdapter(emptyList())
-        screeningsRecyclerView.apply {
-            layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            adapter = screeningsAdapter
-        }
 
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
@@ -98,8 +87,10 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
             screeningsList = screenings
             val filterScreenings = filterScreenings(screeningsList, args.movie)
             screeningsAdapter.setItems(filterScreenings)
-            Log.i("ReservationFragment.kt", "onViewCreated: ${screenings}")
+
         }
+
+
 
         return view
     }
@@ -107,4 +98,13 @@ class ReservationFragment : Fragment(R.layout.fragment_reservation) {
     private suspend fun makeFetchRequest(){
         movieViewModel.fetchScreenings()
     }
+
+    override fun onItemClick(screening: ScreeningDataModel) {
+        Log.i("ReservationFragment.kt", "onItemClick: ${screening.id}")
+        val action = ReservationFragmentDirections.actionReservationFragmentToSeatsFragment(screening)
+        if(view != null){
+            view?.findNavController()?.navigate(action)
+        }
+
+}
 }

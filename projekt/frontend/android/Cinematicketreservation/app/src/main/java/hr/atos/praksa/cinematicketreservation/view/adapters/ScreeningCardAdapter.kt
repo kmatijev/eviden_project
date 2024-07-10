@@ -1,5 +1,6 @@
 package hr.atos.praksa.cinematicketreservation.view.adapters
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -7,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import hr.atos.praksa.cinematicketreservation.R
+import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
 
 class ScreeningCardAdapter(private var screeningsList: List<ScreeningDataModel>) :
@@ -17,6 +19,7 @@ class ScreeningCardAdapter(private var screeningsList: List<ScreeningDataModel>)
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.screening_button_design, parent, false)
         return ViewHolder(view, onItemClickListener, screeningsList)
+
     }
 
     fun setItems(screenings: List<ScreeningDataModel>) {
@@ -45,6 +48,8 @@ class ScreeningCardAdapter(private var screeningsList: List<ScreeningDataModel>)
 
         init {
             itemView.setOnClickListener {
+                Log.d("ScreeningCardAdapter.kt", "onItemClick:")
+
                 val position = adapterPosition
                 if (position != RecyclerView.NO_POSITION) {
                     onItemClickListener?.onItemClick(screeningsList[position])

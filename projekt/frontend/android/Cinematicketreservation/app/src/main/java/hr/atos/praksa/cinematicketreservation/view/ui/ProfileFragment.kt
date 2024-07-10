@@ -10,7 +10,7 @@ import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 
 class ProfileFragment: Fragment(R.layout.fragment_profile) {
     //val args: ProfileFragmentArgs by navArgs()
-    //private lateinit var movie: MovieDataModel
+    private lateinit var movie: MovieDataModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
