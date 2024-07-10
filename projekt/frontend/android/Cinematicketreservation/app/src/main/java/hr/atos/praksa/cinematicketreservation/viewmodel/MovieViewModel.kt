@@ -70,5 +70,12 @@ class MovieViewModel(): ViewModel() {
             val filteredScreeningsList = screeningsList.filter { it.movieId == movie.id }
             return filteredScreeningsList
         }
+
+        fun filterSeats(screening: ScreeningDataModel, seats: List<ScreeningSeatDataModel>): List<ScreeningSeatDataModel>{
+            val filteredSeatsList = seats.filter { seat ->
+                screening.id == seat.screeningId
+            }
+            return filteredSeatsList
+        }
     }
 }
