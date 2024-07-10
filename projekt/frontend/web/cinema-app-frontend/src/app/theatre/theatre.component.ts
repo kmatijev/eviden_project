@@ -2,7 +2,6 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MoviesService } from '../movies.service';
 import { Observable, BehaviorSubject } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { SeatComponent } from '../seat/seat.component';
 
 @Component({
@@ -32,7 +31,7 @@ export class TheatreComponent implements OnChanges {
 
   ngOnChanges(changes: SimpleChanges) {
     if (changes['screeningId'] && this.screeningId) {
-      this.moviesService.getSeats().subscribe(seats => {
+      this.moviesService.getSeatsByScreeningId(this.screeningId).subscribe(seats => {
         this.seatsSubject.next(seats);
         console.log('Seats loaded for screening:', this.screeningId, seats);
       });
@@ -49,13 +48,13 @@ export class TheatreComponent implements OnChanges {
       this.moviesService.updateSeatStatus(this.selectedSeatId, false).subscribe(() => {
         const seats = this.seatsSubject.getValue().map(seat => {
           if (seat.id === this.selectedSeatId) {
-            seat.status = false; 
+            seat.status = false;
           }
           return seat;
         });
         this.seatsSubject.next(seats);
         console.log('Reserving seat with ID:', this.selectedSeatId);
-        this.selectedSeatId = undefined; 
+        this.selectedSeatId = undefined;
       });
     }
   }

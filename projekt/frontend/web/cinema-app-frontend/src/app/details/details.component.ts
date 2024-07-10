@@ -25,12 +25,12 @@ import { Observable } from 'rxjs';
       </div>
     </article>
 
-    <div class="screenings">
+    <<div class="screenings">
       <h2>Screening Times</h2>
       <div *ngFor="let screening of screenings$ | async">
         <button (click)="selectScreening(screening.id)">{{ screening.date }} {{ screening.start_time }}</button>
       </div>
-    </div>
+    </div>>
 
     <app-theatre *ngIf="selectedScreeningId" [screeningId]="selectedScreeningId"></app-theatre>
   `,

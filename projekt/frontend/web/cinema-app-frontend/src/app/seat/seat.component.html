@@ -1,8 +1,8 @@
 <div
   class="seat"
   [class.selected]="selected"
-  [class.available]="seat.status"
-  [class.reserved]="!seat.status"
+  [class.available]="seat.status === true"
+  [class.reserved]="seat.status === false"
   (click)="onSelect()"
 >
   {{ seat.id }}

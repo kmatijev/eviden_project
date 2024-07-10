@@ -7,7 +7,7 @@ import { MovieDetails } from './movie-details';
   providedIn: 'root'
 })
 export class MoviesService {
-  private apiUrl = 'http://localhost:3000'; 
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
@@ -23,8 +23,8 @@ export class MoviesService {
     return this.http.get<any[]>(`${this.apiUrl}/screenings?movie_id=${movieId}`);
   }
 
-  getSeats(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/screeningSeats`);
+  getSeatsByScreeningId(screeningId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/screeningSeats?screening_id=${screeningId}`);
   }
 
   updateSeatStatus(seatId: number, status: boolean): Observable<any> {
