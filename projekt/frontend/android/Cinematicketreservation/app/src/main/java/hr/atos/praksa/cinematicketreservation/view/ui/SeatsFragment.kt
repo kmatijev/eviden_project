@@ -22,6 +22,7 @@ import hr.atos.praksa.cinematicketreservation.model.models.TicketDataModel
 import hr.atos.praksa.cinematicketreservation.view.adapters.SeatAdapter
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.filterSeats
+import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.getTickets
 import hr.atos.praksa.cinematicketreservation.viewmodel.MovieViewModel.Companion.saveTicket
 import kotlinx.coroutines.launch
 
@@ -43,22 +44,9 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
         reserveButton.isEnabled = false
         reserveButton.isClickable = false
 
-        val sharedPreferences = activity?.getPreferences(MODE_PRIVATE)
+        val sharedPreferences = activity?.getSharedPreferences("tickets", MODE_PRIVATE)
 
-        val gson = Gson()
-        val json = sharedPreferences?.getString("tickets", null)
-
-        val type: Type = object : TypeToken<ArrayList<TicketDataModel>>() {}.type
-        var ticketList: ArrayList<TicketDataModel> = if (json == null) {
-            ArrayList()
-        } else {
-            try {
-                gson.fromJson(json, type)
-            } catch (e: Exception) {
-                e.printStackTrace()
-                ArrayList()
-            }
-        }
+        var ticketList: ArrayList<TicketDataModel>
 
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
@@ -79,7 +67,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
                 seatNumber = seatNumber.toString(),
                 screeningId = args.screening.id
             )
-
+            ticketList = getTickets(sharedPreferences!!) as ArrayList<TicketDataModel>
             ticketList.add(ticket)
 
             if (sharedPreferences != null) {
