@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/seats_fragment">
+    app:startDestination="@id/home_fragment">
 
     <fragment
         android:id="@+id/home_fragment"
@@ -30,6 +30,13 @@
         <argument
             android:name="movie"
             app:argType="hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel" />
+        <action
+            android:id="@+id/action_reservation_fragment_to_seats_fragment"
+            app:destination="@id/seats_fragment">
+            <argument
+                android:name="screening"
+                app:argType="hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel" />
+        </action>
     </fragment>
 
     <fragment
@@ -37,6 +44,9 @@
         android:name="hr.atos.praksa.cinematicketreservation.view.ui.SeatsFragment"
         tools:layout="@layout/fragment_seats">
 
+        <argument
+            android:name="screening"
+            app:argType="hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel" />
     </fragment>
 
     <action
