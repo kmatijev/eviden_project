@@ -1,20 +1,29 @@
 package hr.atos.praksa.cinematicketreservation.viewmodel
 
+import android.content.Context.MODE_PRIVATE
+import android.content.SharedPreferences
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.google.gson.Gson
+import com.google.gson.reflect.TypeToken
 import hr.atos.praksa.cinematicketreservation.model.models.MovieDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel
 import hr.atos.praksa.cinematicketreservation.model.models.ScreeningSeatDataModel
+import hr.atos.praksa.cinematicketreservation.model.models.TicketDataModel
 import hr.atos.praksa.cinematicketreservation.model.repository.MovieRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.channels.TickerMode
 import kotlinx.coroutines.launch
+import java.lang.reflect.Type
+import java.util.ArrayList
 
 class MovieViewModel(): ViewModel() {
     var movies = MutableLiveData<List<MovieDataModel>>()
     var screenings = MutableLiveData<List<ScreeningDataModel>>()
     var seats = MutableLiveData<List<ScreeningSeatDataModel>>()
+    var tickets = MutableLiveData<List<TicketDataModel>>()
 
     suspend fun fetchMovies(){
         CoroutineScope(Dispatchers.IO).launch {
@@ -76,6 +85,36 @@ class MovieViewModel(): ViewModel() {
                 screening.id == seat.screeningId
             }
             return filteredSeatsList
+        }
+
+        fun saveTicket(sharedPreferences: SharedPreferences, ticketList: ArrayList<TicketDataModel>){
+            val gson = Gson()
+
+            val ticketJson: String = gson.toJson(ticketList)
+
+            with(sharedPreferences.edit()){
+                putString("tickets", ticketJson)
+                apply()
+            }
+        }
+
+        fun getTickets(sharedPreferences: SharedPreferences): List<TicketDataModel>{
+
+            val gson = Gson()
+            val ticketsJson = sharedPreferences.getString("tickets", null)
+            val type: Type = object : TypeToken<ArrayList<TicketDataModel>>() {}.type
+
+            val ticketList: List<TicketDataModel> = if (ticketsJson == null) {
+                emptyList()
+            } else {
+                try {
+                    gson.fromJson(ticketsJson, type)
+                } catch (e: Exception) {
+                    e.printStackTrace()
+                    emptyList()
+                }
+            }
+            return ticketList
         }
     }
 }
