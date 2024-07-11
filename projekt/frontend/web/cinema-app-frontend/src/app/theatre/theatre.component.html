@@ -8,11 +8,14 @@
       [seat]="seat"
       [seatNumber]="rowIndex * rows[0].end + seatIndex + 1"
       [selected]="seat.id === selectedSeatId"
-      (select)="selectSeat($event)"
+      (select)="selectSeat(seat.id, rowIndex * rows[0].end + seatIndex + 1)"
     >
     </app-seat>
   </div>
 </div>
 <div class="reserve-button-container" *ngIf="selectedSeatId != null">
   <button (click)="reserveSeat()">Reserve</button>
+</div>
+<div *ngIf="reservedSeatMessage" class="reserved-message">
+  <p>{{ reservedSeatMessage }}</p>
 </div>

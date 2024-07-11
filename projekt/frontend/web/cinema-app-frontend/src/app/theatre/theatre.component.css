@@ -48,3 +48,17 @@ button {
 button:hover {
     background-color: #0056b3;
 }
+
+.reserved-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.reserved-message p {
+    font-size: 18px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    border: 1px solid #3e3e3e;
+}

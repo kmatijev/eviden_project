@@ -395,12 +395,12 @@
     {
       "id": "65",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "66",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "67",
@@ -410,7 +410,7 @@
     {
       "id": "68",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "69",
@@ -510,7 +510,7 @@
     {
       "id": "88",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "89",
@@ -535,12 +535,12 @@
     {
       "id": "93",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "94",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "95",
@@ -555,7 +555,7 @@
     {
       "id": "97",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "98",
@@ -600,7 +600,7 @@
     {
       "id": "106",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "107",
@@ -630,7 +630,7 @@
     {
       "id": "112",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "113",
@@ -645,7 +645,7 @@
     {
       "id": "115",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "116",
@@ -710,12 +710,12 @@
     {
       "id": "128",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "129",
       "screening_id": 3,
-      "status": true
+      "status": false
     },
     {
       "id": "130",
@@ -730,7 +730,7 @@
     {
       "id": "132",
       "screening_id": 3,
-      "status": true
+      "status": false
     },
     {
       "id": "133",
@@ -935,7 +935,7 @@
     {
       "id": "173",
       "screening_id": 3,
-      "status": true
+      "status": false
     },
     {
       "id": "174",

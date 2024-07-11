@@ -13,9 +13,12 @@ import { SeatComponent } from '../seat/seat.component';
 })
 export class TheatreComponent implements OnChanges {
   @Input() screeningId!: number;
+
   private seatsSubject = new BehaviorSubject<any[]>([]);
   seats$ = this.seatsSubject.asObservable();
   selectedSeatId?: number;
+  selectedSeatNumber?: number;
+  reservedSeatMessage?: string;
   rows: { start: number, end: number }[] = [
     { start: 0, end: 8 },
     { start: 8, end: 16 },
@@ -38,8 +41,9 @@ export class TheatreComponent implements OnChanges {
     }
   }
 
-  selectSeat(seatId: number) {
+  selectSeat(seatId: number, seatNumber: number) {
     this.selectedSeatId = seatId;
+    this.selectedSeatNumber = seatNumber;
     console.log('Selected seat ID:', seatId);
   }
 
@@ -53,6 +57,7 @@ export class TheatreComponent implements OnChanges {
           return seat;
         });
         this.seatsSubject.next(seats);
+        this.reservedSeatMessage = `You reserved seat number: ${this.selectedSeatNumber}`;
         console.log('Reserving seat with ID:', this.selectedSeatId);
         this.selectedSeatId = undefined;
       });
