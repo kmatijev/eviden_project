@@ -91,7 +91,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
     override fun onSeatSelected(position: Int) {
         reserveButton.isEnabled = true
         reserveButton.isClickable = true
-        seatNumber = position
+        seatNumber = position+1
         selectedSeat = movieViewModel.seats.value?.get(position)!!
     }
 

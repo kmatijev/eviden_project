@@ -43,15 +43,11 @@ class TicketCardAdapter(private var ticketList: List<TicketDataModel>, private v
             holder.name.text = movie.name
         }
 
-        holder.seatNumber.text = ticket.seatNumber
+        holder.seatNumber.text = "Your seat: ${ticket.seatNumber}"
 
         if (screening != null){
-            holder.startTime.text = screening.startTime
+            holder.startTime.text = "${screening.date} ${screening.startTime}"
         }
-    }
-
-    override fun onBindViewHolder(holder: TicketCardAdapter.ViewHolder, position: Int, payloads: MutableList<Any>) {
-
     }
 
     class ViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
