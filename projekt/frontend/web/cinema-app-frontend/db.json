@@ -475,7 +475,7 @@
     {
       "id": "81",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "82",
@@ -620,7 +620,7 @@
     {
       "id": "110",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "111",
@@ -780,7 +780,7 @@
     {
       "id": "142",
       "screening_id": 3,
-      "status": true
+      "status": false
     },
     {
       "id": "143",
@@ -1060,7 +1060,7 @@
     {
       "id": "198",
       "screening_id": 4,
-      "status": true
+      "status": false
     },
     {
       "id": "199",
