@@ -3,9 +3,7 @@ import { CommonModule } from '@angular/common';
 import { MovieDetails } from '../movie-details';
 import { ActivatedRoute } from '@angular/router';
 import { MoviesService } from '../movies.service';
-import { SeatComponent } from '../seat/seat.component';
 import { TheatreComponent } from '../theatre/theatre.component';
-import { switchMap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
 
 @Component({
@@ -26,12 +24,22 @@ import { Observable } from 'rxjs';
         </section>
       </div>
     </article>
-    <app-theatre></app-theatre>
+
+    <div class="screenings">
+      <h2>Screening Times</h2>
+      <div *ngFor="let screening of screenings$ | async">
+        <button (click)="selectScreening(screening.id)">{{ screening.date }} {{ screening.start_time }}</button>
+      </div>
+    </div>
+
+    <app-theatre *ngIf="selectedScreeningId" [screeningId]="selectedScreeningId"></app-theatre>
   `,
-  styleUrl: './details.component.css'
+  styleUrls: ['./details.component.css']
 })
 export class DetailsComponent implements OnInit {
   movieDetails$!: Observable<MovieDetails>;
+  screenings$!: Observable<any[]>;
+  selectedScreeningId!: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -39,8 +47,13 @@ export class DetailsComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.movieDetails$ = this.route.params.pipe(
-      switchMap(params => this.moviesService.getMovieById(+params['id']))
-    );
+    const movieId = +this.route.snapshot.paramMap.get('id')!;
+    this.movieDetails$ = this.moviesService.getMovieById(movieId);
+    this.screenings$ = this.moviesService.getScreeningsByMovieId(movieId);
+  }
+
+  selectScreening(screeningId: number) {
+    console.log('Selected Screening ID:', screeningId);
+    this.selectedScreeningId = screeningId;
   }
 }

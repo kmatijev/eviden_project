@@ -7,15 +7,27 @@ import { MovieDetails } from './movie-details';
   providedIn: 'root'
 })
 export class MoviesService {
-  private apiUrl = 'http://localhost:3000/movies'; 
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   getAllMovies(): Observable<MovieDetails[]> {
-    return this.http.get<MovieDetails[]>(this.apiUrl);
+    return this.http.get<MovieDetails[]>(`${this.apiUrl}/movies`);
   }
 
   getMovieById(id: number): Observable<MovieDetails> {
-    return this.http.get<MovieDetails>(`${this.apiUrl}/${id}`);
+    return this.http.get<MovieDetails>(`${this.apiUrl}/movies/${id}`);
+  }
+
+  getScreeningsByMovieId(movieId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/screenings?movie_id=${movieId}`);
+  }
+
+  getSeatsByScreeningId(screeningId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/screeningSeats?screening_id=${screeningId}`);
+  }
+
+  updateSeatStatus(seatId: number, status: boolean): Observable<any> {
+    return this.http.patch<any>(`${this.apiUrl}/screeningSeats/${seatId}`, { status });
   }
 }

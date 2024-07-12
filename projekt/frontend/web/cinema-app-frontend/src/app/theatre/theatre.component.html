@@ -1,95 +1,21 @@
-<div class="theatre">
-    <div class="left-section">
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-        </div>
-
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-        </div>
-
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-        </div>
-    </div>
-    <div class="mid-section">
-
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-        </div>
-
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-    </div>
-    </div>
-    <div class="right-section">
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-        </div>
-
-        <div class="row">
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-            <app-seat></app-seat>
-    </div>
-
-    <div class="row">
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-        <app-seat></app-seat>
-    </div>
-    </div>
-
+<div class="theatre" *ngIf="seats$ | async as seats">
+  <div class="row" *ngFor="let row of rows; let rowIndex = index">
+    <app-seat
+      *ngFor="
+        let seat of seats | slice : row.start : row.end;
+        let seatIndex = index
+      "
+      [seat]="seat"
+      [seatNumber]="rowIndex * rows[0].end + seatIndex + 1"
+      [selected]="seat.id === selectedSeatId"
+      (select)="selectSeat(seat.id, rowIndex * rows[0].end + seatIndex + 1)"
+    >
+    </app-seat>
+  </div>
+</div>
+<div class="reserve-button-container" *ngIf="selectedSeatId != null">
+  <button (click)="reserveSeat()">Reserve</button>
+</div>
+<div *ngIf="reservedSeatMessage" class="reserved-message">
+  <p>{{ reservedSeatMessage }}</p>
 </div>
