@@ -68,14 +68,21 @@
       "start_time": "10:00",
       "date": "28.6.2024.",
       "movie_id": 4,
-      "ongoing": "false"
+      "ongoing": "true"
+    },
+    {
+      "id": "5",
+      "start_time": "12:00",
+      "date": "28.6.2024.",
+      "movie_id": 4,
+      "ongoing": "true"
     }
   ],
   "screeningSeats": [
     {
       "id": "1",
       "screening_id": 1,
-      "status": false
+      "status": true
     },
     {
       "id": "2",
@@ -85,7 +92,7 @@
     {
       "id": "3",
       "screening_id": 1,
-      "status": false
+      "status": true
     },
     {
       "id": "4",
@@ -120,7 +127,7 @@
     {
       "id": "10",
       "screening_id": 1,
-      "status": false
+      "status": true
     },
     {
       "id": "11",
@@ -425,7 +432,7 @@
     {
       "id": "71",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "72",
@@ -435,12 +442,12 @@
     {
       "id": "73",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "74",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "75",
@@ -455,7 +462,7 @@
     {
       "id": "77",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "78",
@@ -565,7 +572,7 @@
     {
       "id": "99",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "100",
@@ -590,7 +597,7 @@
     {
       "id": "104",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "105",
@@ -610,7 +617,7 @@
     {
       "id": "108",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "109",
@@ -665,7 +672,7 @@
     {
       "id": "119",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "120",
@@ -705,7 +712,7 @@
     {
       "id": "127",
       "screening_id": 2,
-      "status": true
+      "status": false
     },
     {
       "id": "128",
@@ -810,7 +817,7 @@
     {
       "id": "148",
       "screening_id": 3,
-      "status": true
+      "status": false
     },
     {
       "id": "149",
@@ -1350,6 +1357,331 @@
     {
       "id": "256",
       "screening_id": 4,
+      "status": true
+    },
+    {
+      "id": "257",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "258",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "259",
+      "screening_id": 5,
+      "status": false
+    },
+    {
+      "id": "260",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "261",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "262",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "263",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "264",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "265",
+      "screening_id": 5,
+      "status": false
+    },
+    {
+      "id": "266",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "267",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "268",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "269",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "270",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "271",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "272",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "273",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "274",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "275",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "276",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "277",
+      "screening_id": 5,
+      "status": false
+    },
+    {
+      "id": "278",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "279",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "280",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "281",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "282",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "283",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "284",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "285",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "286",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "287",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "288",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "289",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "290",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "291",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "292",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "293",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "294",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "295",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "296",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "297",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "298",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "299",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "300",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "301",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "302",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "303",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "304",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "305",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "306",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "307",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "308",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "309",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "310",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "311",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "312",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "313",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "314",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "315",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "316",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "317",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "318",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "319",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "320",
+      "screening_id": 5,
+      "status": true
+    },
+    {
+      "id": "321",
+      "screening_id": 5,
       "status": true
     }
   ]
