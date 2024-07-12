@@ -20,7 +20,7 @@ class MovieRepository private constructor(){
         }
         init{
             val retrofit = Retrofit.Builder()
-                .baseUrl("http://192.168.1.215:3000/")
+                .baseUrl("http://192.168.1.173:3000/")
                 .addConverterFactory(GsonConverterFactory.create())
                 .build()
             movieApiService = retrofit.create(MovieAPIService::class.java) }
