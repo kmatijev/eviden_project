@@ -19,9 +19,9 @@
     </fragment>
 
     <fragment
-        android:id="@+id/profile_fragment"
-        android:name="hr.atos.praksa.cinematicketreservation.view.ui.ProfileFragment"
-        tools:layout="@layout/fragment_profile" />
+        android:id="@+id/ticket_fragment"
+        android:name="hr.atos.praksa.cinematicketreservation.view.ui.TicketsFragment"
+        tools:layout="@layout/fragment_ticket" />
 
     <fragment
         android:id="@+id/reservation_fragment"
@@ -47,6 +47,9 @@
         <argument
             android:name="screening"
             app:argType="hr.atos.praksa.cinematicketreservation.model.models.ScreeningDataModel" />
+        <action
+            android:id="@+id/action_seats_fragment_to_home_fragment"
+            app:destination="@id/home_fragment" />
     </fragment>
 
     <action
@@ -54,7 +57,7 @@
         app:destination="@id/home_fragment" />
 
     <action
-        android:id="@+id/profile"
-        app:destination="@id/profile_fragment" />
+        android:id="@+id/tickets"
+        app:destination="@id/ticket_fragment" />
 
 </navigation>

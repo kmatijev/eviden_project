@@ -30,7 +30,7 @@ class ScreeningCardAdapter(private var screeningsList: List<ScreeningDataModel>)
     override fun onBindViewHolder(holder: ScreeningCardAdapter.ViewHolder, position: Int) {
         val screening = screeningsList[position]
 
-        holder.btnScreening.text = screening.startTime
+        holder.btnScreening.text = "${screening.date} ${screening.startTime}"
     }
 
     override fun getItemCount(): Int {

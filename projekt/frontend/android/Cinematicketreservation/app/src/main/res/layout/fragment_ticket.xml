@@ -4,12 +4,11 @@
     android:id="@+id/profile_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".view.ui.ProfileFragment">
+    tools:context=".view.ui.TicketsFragment">
 
-    <TextView
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/ticket_recycler"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Profile page"
-        android:id="@+id/textView"/>
-
+        android:layout_height="match_parent"
+        tools:listitem="@layout/ticket_card_design"/>
 </RelativeLayout>
