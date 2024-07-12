@@ -98,23 +98,15 @@ class MovieViewModel(): ViewModel() {
             }
         }
 
-        fun getTickets(sharedPreferences: SharedPreferences): List<TicketDataModel>{
-
+        fun getTickets(sharedPreferences: SharedPreferences): List<TicketDataModel> {
             val gson = Gson()
-            val ticketsJson = sharedPreferences.getString("tickets", null)
+            val json = sharedPreferences.getString("tickets", null)
             val type: Type = object : TypeToken<ArrayList<TicketDataModel>>() {}.type
-
-            val ticketList: List<TicketDataModel> = if (ticketsJson == null) {
-                emptyList()
+            return if (json != null) {
+                gson.fromJson(json, type)
             } else {
-                try {
-                    gson.fromJson(ticketsJson, type)
-                } catch (e: Exception) {
-                    e.printStackTrace()
-                    emptyList()
-                }
+                ArrayList()
             }
-            return ticketList
         }
     }
 }

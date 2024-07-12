@@ -46,7 +46,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
 
         val sharedPreferences = activity?.getSharedPreferences("tickets", MODE_PRIVATE)
 
-        var ticketList: ArrayList<TicketDataModel>
+        var ticketList: ArrayList<TicketDataModel> = getTickets(sharedPreferences!!) as ArrayList<TicketDataModel>
 
         viewLifecycleOwner.lifecycleScope.launch {
             makeFetchRequest()
@@ -58,7 +58,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
             seatGridView.adapter = seatAdapter
         }
 
-        reserveButton.setOnClickListener{
+        reserveButton.setOnClickListener {
             val sharedPreferences = activity?.getSharedPreferences("tickets", MODE_PRIVATE)
 
             ticket = TicketDataModel(
@@ -67,7 +67,7 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
                 seatNumber = seatNumber.toString(),
                 screeningId = args.screening.id
             )
-            ticketList = getTickets(sharedPreferences!!) as ArrayList<TicketDataModel>
+
             ticketList.add(ticket)
 
             if (sharedPreferences != null) {
@@ -78,11 +78,10 @@ class SeatsFragment: Fragment(R.layout.fragment_seats), SeatAdapter.SeatSelectio
             toast.show()
             val action = SeatsFragmentDirections.actionSeatsFragmentToHomeFragment()
 
-            if (view != null){
-                view.findNavController().navigate(action)
-            }
+            view.findNavController().navigate(action)
         }
     }
+
 
     private suspend fun makeFetchRequest(){
         movieViewModel.fetchSeats()
